@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     self.review = Review.new(review_params)
 
     if review.save
+      review.user_id  = current_user.id
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
