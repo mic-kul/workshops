@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   end
 
   root 'categories#index'
+
+  resources :users, only: [:show]
+
+  devise_for :users
 end
