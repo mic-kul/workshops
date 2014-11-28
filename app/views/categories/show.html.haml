@@ -4,14 +4,15 @@
   %b Name:
   = category.name
 
-%p
+%ul
   - category.products.each do |product|
-    = product.title
+    %li
+      = product.title
 
-%p
-  %h3 New product
+.well
+  %h3 Add new product
   = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
+- if current_user.admin?
+  = link_to 'Edit', edit_category_path(category)
+  \|
 = link_to 'Back', categories_path, class: 'btn btn-primary'
