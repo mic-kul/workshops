@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :products
 
-  validates_presence_of :firstname, :lastname
+  #validates_presence_of :firstname, :lastname
+  validates :firstname, presence: true
+  validates :lastname, presence: true
 
   def admin?
     self.admin
