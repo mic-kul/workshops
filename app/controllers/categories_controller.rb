@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
+  before_action :admin_access, except: [:index, :show]
   
   expose(:categories)
   expose(:category)
@@ -43,5 +44,9 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def admin_access
+      redirect_to new_user_session_path, notice: 'Access denied!' unless current_user.try(:admin?)
     end
 end
