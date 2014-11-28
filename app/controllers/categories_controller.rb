@@ -47,6 +47,6 @@ class CategoriesController < ApplicationController
     end
 
     def admin_access
-      redirect_to new_user_session_path, notice: 'Access denied!' unless current_user.try(:admin?)
+      redirect_to new_user_session_path, error: 'Access denied!' unless current_user.try(:admin?)
     end
 end
