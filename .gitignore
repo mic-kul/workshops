@@ -28,3 +28,7 @@ local.local.*
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore ide settings
+.idea
+.idea/*
